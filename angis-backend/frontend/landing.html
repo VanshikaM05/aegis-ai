@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEGIS AI | Intelligent Cybersecurity</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080B12;
+    color: #E2E6EC;
+    overflow-x: hidden;
+}
+
+
+/* ANIMATED NETWORK BACKGROUND */
+
+#networkBackground {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.38;
+}
+
+/* Keep website content above the background */
+
+.navbar,
+.hero,
+.trust-strip,
+.section,
+.cta,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --bg: #080B12;
+    --panel: #101720;
+    --card: #151C26;
+    --border: #283241;
+    --text: #E2E6EC;
+    --muted: #9CA7B5;
+    --blue: #60A5FA;
+    --bright: #3B82F6;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    height: 78px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,11,18,0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-login {
+    border: 1px solid #3B82F6;
+    padding: 11px 21px;
+    border-radius: 7px;
+    color: var(--blue) !important;
+}
+
+.nav-login:hover {
+    background: #2563EB;
+    color: white !important;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 690px;
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 45px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    right: 5%;
+    top: 5%;
+    background: radial-gradient(
+        circle,
+        rgba(37,99,235,0.14),
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 15px;
+    border: 1px solid #334B70;
+    background: rgba(30,58,95,0.22);
+    border-radius: 30px;
+    color: var(--blue);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 28px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #60A5FA;
+    box-shadow: 0 0 10px #60A5FA;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5vw, 65px);
+    line-height: 1.13;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero-description {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 32px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #2563EB;
+    color: white;
+    box-shadow: 0 5px 25px rgba(37,99,235,0.2);
+}
+
+.btn-primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(37,99,235,0.35);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background: var(--card);
+    border-color: #52647A;
+}
+
+/* NETWORK VISUAL */
+
+.network-visual {
+    min-height: 410px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.network-circle {
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(96,165,250,0.28);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+        0 0 50px rgba(37,99,235,0.08),
+        inset 0 0 45px rgba(37,99,235,0.07);
+    animation: breathe 4s ease-in-out infinite;
+}
+
+.network-circle::before,
+.network-circle::after {
+    content: "";
+    position: absolute;
+    border: 1px dashed rgba(96,165,250,0.25);
+    border-radius: 50%;
+}
+
+.network-circle::before {
+    width: 265px;
+    height: 265px;
+}
+
+.network-circle::after {
+    width: 410px;
+    height: 410px;
+}
+
+.shield-core {
+    width: 125px;
+    height: 125px;
+    border-radius: 30px;
+    background: linear-gradient(145deg,#192D49,#101720);
+    border: 1px solid #416B9E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+    box-shadow: 0 0 40px rgba(59,130,246,0.25);
+    z-index: 2;
+}
+
+.node {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background: #60A5FA;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #3B82F6;
+    animation: pulse 2s infinite;
+}
+
+.node.one { top: 10%; left: 48%; }
+.node.two { top: 31%; right: 4%; animation-delay: .5s; }
+.node.three { bottom: 13%; right: 22%; animation-delay: 1s; }
+.node.four { bottom: 25%; left: 2%; animation-delay: 1.5s; }
+.node.five { top: 25%; left: 12%; animation-delay: .8s; }
+
+.network-label {
+    position: absolute;
+    background: #151C26;
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.label-top {
+    top: 12%;
+    right: -2%;
+}
+
+.label-bottom {
+    bottom: 10%;
+    left: -3%;
+}
+
+@keyframes pulse {
+    0%,100% { opacity: .4; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.35); }
+}
+
+
+/* ENHANCED HERO SHIELD */
+
+.shield-core {
+    position: relative;
+    animation: shieldFloat 3.5s ease-in-out infinite;
+    box-shadow:
+        0 0 25px rgba(59,130,246,0.25),
+        0 0 55px rgba(59,130,246,0.15),
+        inset 0 0 20px rgba(96,165,250,0.12);
+}
+
+.shield-core::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 38px;
+    animation: shieldGlow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* ROTATING INNER NETWORK RING */
+
+.network-circle::before {
+    animation: ringRotate 18s linear infinite;
+}
+
+/* PULSING OUTER RING */
+
+.network-circle::after {
+    animation: outerRingPulse 4s ease-in-out infinite;
+}
+
+@keyframes shieldFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+@keyframes shieldGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.06);
+    }
+}
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes outerRingPulse {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.035);
+    }
+}
+
+@keyframes breathe {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.025); }
+}
+
+/* TRUST STRIP */
+
+.trust-strip {
+    padding: 28px 8%;
+    background: #0C111A;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 65px;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    text-align: center;
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.trust-item span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* SECTION */
+
+.section {
+    padding: 100px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 55px;
+}
+
+.section-heading .small-title {
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: clamp(29px,4vw,42px);
+    margin-bottom: 17px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* DASHBOARD PREVIEW */
+
+.preview-section {
+    background: #0C111A;
+}
+
+.dashboard-preview {
+    max-width: 1000px;
+    margin: auto;
+    padding: 12px;
+    background: #111A27;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
+}
+
+.preview-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.preview-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.preview-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #52647A;
+}
+
+.preview-status {
+    color: #93C5FD;
+}
+
+.preview-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 14px;
+}
+
+.preview-card {
+    padding: 19px;
+    border-radius: 9px;
+    background: #151F2D;
+    border: 1px solid #28394D;
+}
+
+.preview-card small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.preview-card strong {
+    display: block;
+    font-size: 25px;
+    margin-top: 12px;
+}
+
+.preview-card p {
+    color: #93C5FD;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+.preview-chart {
+    grid-column: 1/-1;
+    padding: 23px;
+    border-radius: 9px;
+    background: #151F2D;
+    border: 1px solid #28394D;
+}
+
+.preview-chart h3 {
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.chart-bars {
+    height: 125px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    gap: 15px;
+    border-bottom: 1px solid #39485A;
+}
+
+.chart-bars span {
+    width: 8%;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(to top,#2563EB,#93C5FD);
+    animation: barRise 1.5s ease-out;
+}
+
+@keyframes barRise {
+    from { height: 0; }
+}
+
+.chart-bars span:nth-child(1) { height: 45%; }
+.chart-bars span:nth-child(2) { height: 75%; }
+.chart-bars span:nth-child(3) { height: 55%; }
+.chart-bars span:nth-child(4) { height: 90%; }
+.chart-bars span:nth-child(5) { height: 65%; }
+.chart-bars span:nth-child(6) { height: 80%; }
+.chart-bars span:nth-child(7) { height: 38%; }
+
+/* FEATURES */
+
+.features-section {
+    background: var(--bg);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    border-color: #477BB8;
+    box-shadow: 0 12px 35px rgba(37,99,235,.08);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #1C2C42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    margin-bottom: 22px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 13px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* HOW IT WORKS */
+
+.workflow-section {
+    background: #0C111A;
+}
+
+.workflow {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.workflow-card {
+    text-align: center;
+    padding: 25px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.workflow-number {
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #1D3B63;
+    color: #93C5FD;
+    font-weight: bold;
+}
+
+.workflow-card h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.workflow-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* CTA */
+
+.cta {
+    margin: 80px 8%;
+    padding: 65px 25px;
+    text-align: center;
+    border: 1px solid #334B70;
+    border-radius: 15px;
+    background:
+        radial-gradient(circle at 50% 100%,
+        rgba(37,99,235,.2),transparent 65%),
+        #101720;
+}
+
+.cta h2 {
+    font-size: 35px;
+    margin-bottom: 17px;
+}
+
+.cta p {
+    color: var(--muted);
+    margin-bottom: 27px;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 35px 8%;
+    background: #090D13;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.footer-logo span {
+    color: var(--blue);
+}
+
+footer p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .network-visual {
+        margin-top: 25px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .workflow {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .navbar {
+        height: auto;
+        padding: 20px 5%;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 75px 6%;
+    }
+
+    .network-circle {
+        transform: scale(.75);
+    }
+
+    .network-visual {
+        min-height: 330px;
+        overflow: hidden;
+    }
+
+    .feature-grid,
+    .workflow {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-content {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-chart {
+        grid-column: auto;
+    }
+
+    .section {
+        padding: 75px 6%;
+    }
+
+    .cta {
+        margin: 50px 5%;
+    }
+
+    .cta h2 {
+        font-size: 27px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+/* SCROLL REVEAL ANIMATIONS */
+
+.workflow-card,
+.feature-card,
+.cta {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.workflow-card.show,
+.feature-card.show,
+.cta.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* STAGGERED CARD ANIMATIONS */
+
+.workflow-card:nth-child(1),
+.feature-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.workflow-card:nth-child(2),
+.feature-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.workflow-card:nth-child(3),
+.feature-card:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.workflow-card:nth-child(4),
+.feature-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.workflow-card:nth-child(5),
+.feature-card:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.workflow-card:nth-child(6),
+.feature-card:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+
+/* Accessibility: respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .workflow-card,
+    .feature-card,
+    .cta {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ANIMATED NETWORK BACKGROUND -->
+<canvas id="networkBackground"></canvas>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+
+    <div class="logo">🛡️ AEGIS <span>AI</span></div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#preview">Platform</a>
+        <a href="#features">Features</a>
+        <a href="#workflow">How It Works</a>
+        <a href="login.html" class="nav-login">Login →</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            <span class="status-dot"></span>
+            AI-POWERED CYBER THREAT DETECTION
+        </div>
+
+        <h1>
+            Stay Ahead of
+            <span>Cyber Threats.</span>
+            Protect What Matters.
+        </h1>
+
+        <p class="hero-description">
+            Meet AEGIS AI — an intelligent network traffic
+            analysis system that uses machine learning to
+            identify suspicious activity, classify potential
+            threats and provide early warnings.
+        </p>
+
+        <div class="hero-actions">
+            <a href="login.html" class="btn btn-primary">
+                Get Started →
+            </a>
+
+            <a href="#features" class="btn btn-outline">
+                Explore Platform
+            </a>
+        </div>
+
+    </div>
+
+    <div class="network-visual">
+
+        <div class="network-circle">
+
+            <div class="shield-core">🛡️</div>
+
+            <span class="node one"></span>
+            <span class="node two"></span>
+            <span class="node three"></span>
+            <span class="node four"></span>
+            <span class="node five"></span>
+
+        </div>
+
+        <div class="network-label label-top">
+            ◉ Intelligent Monitoring
+        </div>
+
+        <div class="network-label label-bottom">
+            ◈ Threat Intelligence
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+
+    <div class="trust-item">
+        <strong>Machine Learning</strong>
+        <span>Random Forest Classification</span>
+    </div>
+
+    <div class="trust-item">
+        <strong>Network Analysis</strong>
+        <span>Traffic Classification</span>
+    </div>
+
+    <div class="trust-item">
+        <strong>Early Warning</strong>
+        <span>Suspicious Activity Alerts</span>
+    </div>
+
+</section>
+
+<!-- DASHBOARD PREVIEW -->
+<section class="section preview-section" id="preview">
+
+    <div class="section-heading">
+
+        <div class="small-title">THE AEGIS PLATFORM</div>
+
+        <h2>Security Insights at a Glance</h2>
+
+        <p>
+            Explore a centralized dashboard designed to
+            present network traffic analysis, threat
+            classifications and security insights.
+        </p>
+
+    </div>
+
+    <div class="dashboard-preview">
+
+        <div class="preview-top">
+
+            <div class="preview-dots">
+                <span></span><span></span><span></span>
+            </div>
+
+            <strong>AEGIS AI | Security Overview</strong>
+
+            <span class="preview-status">
+                ● Dashboard Preview
+            </span>
+
+        </div>
+
+        <div class="preview-content">
+
+            <div class="preview-card">
+                <small>Traffic Records</small>
+                <strong>Analysis</strong>
+                <p>Network traffic overview</p>
+            </div>
+
+            <div class="preview-card">
+                <small>Threat Detection</small>
+                <strong>ML</strong>
+                <p>Random Forest classification</p>
+            </div>
+
+            <div class="preview-card">
+                <small>Early Warning</small>
+                <strong>Alerts</strong>
+                <p>Threat-level monitoring</p>
+            </div>
+
+            <div class="preview-chart">
+
+                <h3>Network Traffic Visualization</h3>
+
+                <div class="chart-bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="section features-section" id="features">
+
+    <div class="section-heading">
+
+        <div class="small-title">WHAT AEGIS AI OFFERS</div>
+
+        <h2>Intelligence Behind Every Detection</h2>
+
+        <p>
+            Understand network activity through machine
+            learning, visual analytics and early warning.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Threat Detection</h3>
+            <p>
+                Analyze network traffic and identify
+                suspicious patterns using a Random
+                Forest machine learning model.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📂</div>
+            <h3>CSV Analysis</h3>
+            <p>
+                Upload network traffic datasets and
+                analyze multiple records to classify
+                potential threats.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚠️</div>
+            <h3>Early Warning</h3>
+            <p>
+                Understand the level of suspicious
+                traffic through NORMAL, ELEVATED
+                and CRITICAL warning levels.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Security Analytics</h3>
+            <p>
+                Visualize normal traffic, detected
+                threats and category-wise traffic
+                distribution.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📜</div>
+            <h3>Threat History</h3>
+            <p>
+                Review previous detection records
+                and monitor the results of network
+                traffic analysis.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Machine Learning</h3>
+            <p>
+                Apply a trained Random Forest model
+                to classify network traffic into
+                supported traffic categories.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section workflow-section" id="workflow">
+
+    <div class="section-heading">
+
+        <div class="small-title">SIMPLE. INTELLIGENT. INFORMATIVE.</div>
+
+        <h2>How AEGIS AI Works</h2>
+
+        <p>
+            A straightforward process that transforms
+            network traffic data into understandable
+            detection results.
+        </p>
+
+    </div>
+
+    <div class="workflow">
+
+        <div class="workflow-card">
+            <div class="workflow-number">01</div>
+            <h3>Input Traffic</h3>
+            <p>
+                Provide network traffic through
+                individual inputs or CSV upload.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">02</div>
+            <h3>Analyze Data</h3>
+            <p>
+                The trained machine learning model
+                examines the traffic features.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">03</div>
+            <h3>Classify Threats</h3>
+            <p>
+                Traffic is classified into the
+                supported categories.
+            </p>
+        </div>
+
+        <div class="workflow-card">
+            <div class="workflow-number">04</div>
+            <h3>View Insights</h3>
+            <p>
+                Review results, analytics and
+                early warning information.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+
+    <h2>Take a Smarter Approach to Security.</h2>
+
+    <p>
+        Explore intelligent network traffic analysis
+        with AEGIS AI.
+    </p>
+
+    <a href="login.html" class="btn btn-primary">
+        Explore AEGIS AI →
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-logo">
+        🛡️ AEGIS <span>AI</span>
+    </div>
+
+    <p>
+        AI Enhanced Guard & Intelligence System
+    </p>
+
+    <p>
+        AI-Powered Cyber Threat Detection & Early Warning
+    </p>
+
+</footer>
+
+
+<script>
+
+// AEGIS AI SCROLL REVEAL
+
+const revealElements = document.querySelectorAll(
+    ".workflow-card, .feature-card, .cta"
+);
+
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
+
+</script>
+
+<script>
+// AEGIS AI NETWORK BACKGROUND
+
+const canvas = document.getElementById("networkBackground");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let animationFrame;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    particles = [];
+
+    const particleCount = Math.min(
+        45,
+        Math.floor((canvas.width * canvas.height) / 25000)
+    );
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35
+        });
+    }
+}
+
+function animateNetwork() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((particle, i) => {
+
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        if (particle.x < 0 || particle.x > canvas.width) {
+            particle.vx *= -1;
+        }
+
+        if (particle.y < 0 || particle.y > canvas.height) {
+            particle.vy *= -1;
+        }
+
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(96,165,250,0.7)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+
+            const other = particles[j];
+
+            const dx = particle.x - other.x;
+            const dy = particle.y - other.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 140) {
+                ctx.beginPath();
+                ctx.moveTo(particle.x, particle.y);
+                ctx.lineTo(other.x, other.y);
+
+                ctx.strokeStyle =
+                    `rgba(96,165,250,${0.16 * (1 - distance / 140)})`;
+
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+    });
+
+    animationFrame = requestAnimationFrame(animateNetwork);
+}
+
+resizeCanvas();
+animateNetwork();
+
+window.addEventListener("resize", resizeCanvas);
+
+</script>
+
+</body>
+</html>
+

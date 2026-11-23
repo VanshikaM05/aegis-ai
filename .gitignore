@@ -1,0 +1,50 @@
+
+# =================================
+# PYTHON CACHE FILES
+# =================================
+__pycache__/
+*.py[cod]
+
+# =================================
+# VIRTUAL ENVIRONMENTS
+# =================================
+venv/
+.venv/
+env/
+
+# =================================
+# ENVIRONMENT VARIABLES AND SECRETS
+# =================================
+.env
+.env.*
+!.env.example
+
+# =================================
+# BACKUP FILES
+# =================================
+*.backup
+*.bak
+*.before-*
+*.pre-*
+
+# =================================
+# OLD MODEL VERSIONS
+# =================================
+angis_random_forest*.pkl
+
+# =================================
+# LARGE CIC-IDS2017 DATASETS
+# =================================
+Friday-WorkingHours-*.csv
+Monday-WorkingHours*.csv
+Tuesday-WorkingHours*.csv
+Thursday-WorkingHours-*.csv
+Wednesday-workingHours*.csv
+Tuesday-Friday-ML-training*.csv
+Tuesday-ML-training.csv
+Tuesday-WorkingHours-clean.csv
+Friday-Bot.csv
+Friday-Bot-extra.csv
+# Unused empty files
+angis-backend/README.md
+angis-backend/frontend/main.py

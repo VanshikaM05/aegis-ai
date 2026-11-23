@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEGIS AI | Secure Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at top right, #1e3a66, transparent 40%),
+                linear-gradient(135deg, #080f1e, #111a2e);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            border: 1px solid #334b70;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #111a2e, #192944);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 34px;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        .shield {
+            font-size: 45px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            text-align: center;
+            color: #9aa8c0;
+            font-size: 13px;
+            margin-top: 8px;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9aa8c0;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border: 1px solid #334b70;
+            border-radius: 8px;
+            background: #0b1528;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 65px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+            background: none;
+            color: #60a5fa;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+        }
+
+        #loginMessage {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 15px;
+            min-height: 18px;
+        }
+
+        .demo-info {
+            margin-top: 22px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #0b1528;
+            color: #9aa8c0;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #65738b;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 28px 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="shield">🛡️</div>
+
+        <div class="logo">AEGIS AI</div>
+
+        <div class="tagline">
+            AI Enhanced Guard & Intelligence System
+        </div>
+
+        <h2>Welcome Back</h2>
+
+        <p class="subtitle">
+            Sign in to access your security dashboard.
+        </p>
+
+        <form id="loginForm">
+
+            <label for="username">Username</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <div class="password-wrapper">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="show-password"
+                    onclick="togglePassword()"
+                >
+                    Show
+                </button>
+
+            </div>
+
+            <button type="submit" class="login-button">
+                Sign In
+            </button>
+
+            <p id="loginMessage" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <p style="text-align: center; color: #9aa8c0; font-size: 14px; margin-top: 20px;">
+            Don't have an account?
+            <button
+                type="button"
+                onclick="showRegisterForm()"
+                style="background: none; border: none; color: #60a5fa; cursor: pointer; font-size: 14px;"
+            >
+                Create Account
+            </button>
+        </p>
+
+
+        <!-- CREATE ACCOUNT FORM -->
+
+        <form id="registerForm" style="display: none;">
+
+            <label for="newUsername">Choose Username</label>
+
+            <input
+                type="text"
+                id="newUsername"
+                placeholder="Create a username"
+                minlength="3"
+                maxlength="50"
+                autocomplete="username"
+                required
+            >
+
+            <label for="newPassword">Create Password</label>
+
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="Minimum 8 characters"
+                minlength="8"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="confirmPassword">Confirm Password</label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Enter password again"
+                required
+            >
+
+            <button type="submit" class="login-button">
+                Create Account
+            </button>
+
+            <p id="registerMessage" role="status" aria-live="polite"></p>
+
+            <p style="text-align: center; color: #9aa8c0; font-size: 14px;">
+                Already have an account?
+                <button
+                    type="button"
+                    onclick="showLoginForm()"
+                    style="background: none; border: none; color: #60a5fa; cursor: pointer; font-size: 14px;"
+                >
+                    Sign In
+                </button>
+            </p>
+
+        </form>
+
+
+        <div class="demo-info">
+            Demo Username: <strong>admin</strong><br>
+            Demo Password: <strong>Aegis@123</strong>
+        </div>
+
+        <div class="footer">
+            AEGIS AI • Cyber Threat Detection System
+        </div>
+
+    </div>
+
+    <script>
+     // SHOW REGISTRATION FORM
+
+        function showRegisterForm() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+
+            document.querySelector("h2").textContent = "Create Account";
+
+            document.querySelector(".subtitle").textContent =
+                "Register to access the AEGIS AI security dashboard.";
+
+            document.getElementById("loginMessage").textContent = "";
+        }
+
+
+        // SHOW LOGIN FORM
+
+        function showLoginForm() {
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+
+            document.querySelector("h2").textContent = "Welcome Back";
+
+            document.querySelector(".subtitle").textContent =
+                "Sign in to access your security dashboard.";
+
+            document.getElementById("registerMessage").textContent = "";
+        }
+
+        function togglePassword() {
+            const password = document.getElementById("password");
+            const button = document.querySelector(".show-password");
+
+            if (password.type === "password") {
+                password.type = "text";
+                button.textContent = "Hide";
+            } else {
+                password.type = "password";
+                button.textContent = "Show";
+            }
+        }
+
+    // CREATE NEW USER ACCOUNT
+
+    document.getElementById("registerForm").addEventListener(
+        "submit",
+        async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("newUsername").value.trim();
+            const password = document.getElementById("newPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const message = document.getElementById("registerMessage");
+
+            if (password !== confirmPassword) {
+                message.style.color = "#ef4444";
+                message.textContent = "Passwords do not match.";
+                return;
+            }
+
+            message.style.color = "#60a5fa";
+            message.textContent = "Creating your account...";
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/register", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || data.error) {
+                    message.style.color = "#ef4444";
+                    message.textContent = data.error || "Registration failed.";
+                    return;
+                }
+
+                message.style.color = "#22c55e";
+                message.textContent = "Account created successfully! Please sign in.";
+
+                document.getElementById("username").value = username;
+
+                document.getElementById("registerForm").reset();
+
+                setTimeout(function() {
+                    showLoginForm();
+                }, 1500);
+
+            } catch (error) {
+                message.style.color = "#ef4444";
+                message.textContent = "Cannot connect to backend. Please check FastAPI.";
+            }
+        }
+    );
+
+        document.getElementById("loginForm").addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+                const username =
+                    document.getElementById("username").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const message =
+                    document.getElementById("loginMessage");
+
+                message.style.color = "#60a5fa";
+                message.textContent = "verifying login...";
+
+                try{
+                    const response = await fetch(
+                        "http://127.0.0.1:8000/login",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                username: username,
+                                password: password
+                            })
+                        }
+                    );
+                
+                    const data = await response.json();
+
+                 if (!response.ok || data.error) {
+                message.style.color = "#ef4444";
+                message.textContent =
+                    data.error || "Invalid username or password.";
+                return;
+            }
+
+             sessionStorage.setItem("aegisLoggedIn", "true");
+            sessionStorage.setItem("aegisUsername", data.username);
+            sessionStorage.setItem("aegisToken", data.access_token);
+
+            message.style.color = "#22c55e";
+            message.textContent =
+                "Login successful! Opening dashboard...";
+
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 700);
+           
+
+        } catch (error) {
+
+            message.style.color = "#ef4444";
+            message.textContent =
+                "Cannot connect to backend. Please check FastAPI.";
+        }
+    }
+            
+);
+    </script>
+
+</body>
+</html>
